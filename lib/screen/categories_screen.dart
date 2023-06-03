@@ -14,16 +14,22 @@ class CategoriesScreen extends StatelessWidget {
         title: const Center(child: Text('Vamos Cozinhar?')),
       ),
       body: GridView(
-        gridDelegate: const  SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20
-        ),
-        children:  DUMMY_CATEGORIES.map((category) {
-          return CategoryItem(category: category,);
-        }).toList()
+          padding: const EdgeInsets.all(25),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20),
+          children: DUMMY_CATEGORIES.map((category) {
+            return CategoryItem(
+              category: category,
+            );
+          }).toList()),
+      floatingActionButton: const FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.add),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
