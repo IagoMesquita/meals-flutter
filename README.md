@@ -1,6 +1,6 @@
 # meals
 
-Mels é um projeto em Flutter,e tem como intuito minha aprendizagem no framework.
+Meals é um projeto em Flutter,e tem como intuito minha aprendizagem no framework.
 O foco desse projeto á **Navegação entre telas**, e támbem reforçar meus conhecimentos em:
 Widgets, conceitos de árvores em FLutter, metódos utilizados em Dart(linguagem na qual o FLutter foi construido),
 diferenças que podem ocorrer ao desenvolver para Android e iOS e etc...
