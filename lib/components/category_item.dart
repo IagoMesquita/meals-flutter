@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screen/categories_meals_screen.dart';
 import '../models/category.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -9,20 +10,31 @@ class CategoryItem extends StatelessWidget {
     required this.category,
   });
 
+  _selectScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return const CategoriesMealsScreen();
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          gradient: LinearGradient(colors: [
-            category.color,
-            category.color.withOpacity(0.5),
-          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-        ),
-        child: Text(
-          category.title,
-          style: Theme.of(context).textTheme.titleLarge,
-        ));
+    return InkWell(
+      onTap: () => _selectScreen(context),
+      borderRadius: BorderRadius.circular(15),
+      splashColor: Theme.of(context).primaryColor,
+      child: Container(
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: LinearGradient(colors: [
+              category.color,
+              category.color.withOpacity(0.5),
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          ),
+          child: Text(
+            category.title,
+            style: Theme.of(context).textTheme.titleLarge,
+          )),
+    );
   }
 }
