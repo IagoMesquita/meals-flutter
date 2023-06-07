@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals/components/category_item.dart';
+import '../components/category_item.dart';
 import '../data/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -25,11 +25,6 @@ class CategoriesScreen extends StatelessWidget {
               category: category,
             );
           }).toList()),
-      floatingActionButton: const FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
