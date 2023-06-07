@@ -25,11 +25,6 @@ class CategoriesScreen extends StatelessWidget {
               category: category,
             );
           }).toList()),
-      floatingActionButton: const FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
