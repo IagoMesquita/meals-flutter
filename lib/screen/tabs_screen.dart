@@ -28,7 +28,7 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title:
-            Center(child: Text(_screens[_selectedSreenIndex]['title'].toString())),
+            Center(child: Text(_screens[_selectedSreenIndex]['title'] as String)),
       ),
       body: _screens[_selectedSreenIndex]['screen'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
@@ -39,7 +39,7 @@ class _TabsScreenState extends State<TabsScreen> {
           selectedItemColor: Theme.of(context).accentColor,
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.access_alarm), label: 'Categotias'),
+                icon: Icon(Icons.category), label: 'Categotias'),
             BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Favoritos'),
           ]),
     );
