@@ -3,6 +3,24 @@ import 'package:flutter/material.dart';
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
 
+  Widget _createItem(IconData icon, String label) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        size: 26,
+      ),
+      title: Text(
+        label,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
+          fontFamily: 'RobotoCondensed',
+        ),
+      ),
+      onTap: () {},
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -13,7 +31,7 @@ class MainDrawer extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             color: Theme.of(context).accentColor,
-            alignment: Alignment.bottomRight,
+            alignment: Alignment.bottomCenter,
             child: Text(
               'Vamos Cozinhar ?',
               style: TextStyle(
@@ -23,6 +41,9 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 20),
+          _createItem(Icons.restaurant, 'Refeições'),
+          _createItem(Icons.settings, 'Configurações'),
         ],
       ),
     );
