@@ -55,8 +55,8 @@ class MealDetailScreen extends StatelessWidget {
                   return Card(
                     color: Theme.of(context).accentColor,
                     child: Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 10),
                       child: Text(meal.ingredients[index]),
                     ),
                   );
@@ -84,6 +84,10 @@ class MealDetailScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.star),
+        onPressed: () => Navigator.of(context).pop(meal.title),
       ),
     );
   }
