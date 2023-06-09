@@ -24,21 +24,32 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Settings settings = Settings();
   List<Meal> _availableMeals = DUMMY_MEALS;
+  final List<Meal> _favoriteMeals = [];
 
   void _filterMeals(Settings settings) {
     setState(() {
-
       this.settings = settings;
 
       _availableMeals = DUMMY_MEALS.where((meal) {
-         final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
-         final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
-         final filterVegetarian = settings.isVegetarian && !meal.isVegetarian;
-         final filterVegan = settings.isVegan && !meal.isVegan;
+        final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
+        final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
+        final filterVegetarian = settings.isVegetarian && !meal.isVegetarian;
+        final filterVegan = settings.isVegan && !meal.isVegan;
 
-         return !filterGluten && !filterLactose && !filterVegetarian && !filterVegan;
+        return !filterGluten &&
+            !filterLactose &&
+            !filterVegetarian &&
+            !filterVegan;
       }).toList();
     });
+  }
+
+  void _toogleFavorite(Meal meal) {
+     setState(() {
+       _favoriteMeals.contains(meal)
+        ? _favoriteMeals.remove(meal)
+        : _favoriteMeals.add(meal);
+     });
   }
 
   // This widget is the root of your application.
@@ -57,11 +68,12 @@ class _MyAppState extends State<MyApp> {
                 fontFamily: 'RobotoCondensed',
               ))),
       routes: {
-        AppRoutes.HOME: (ctx) => const TabsScreen(),
+        AppRoutes.HOME: (ctx) => TabsScreen(favoriteMeals: _favoriteMeals),
         AppRoutes.CATEGORIES_MEALS: (ctx) =>
             CategoriesMealsScreen(meals: _availableMeals),
-        AppRoutes.MEAL_DETAIL: (ctx) => const MealDetailScreen(),
-        AppRoutes.SETTINGS: (ctx) => SettingsScreen(settings: settings, onSettingsChange: _filterMeals)
+        AppRoutes.MEAL_DETAIL: (ctx) => MealDetailScreen( onTogglefavorite: _toogleFavorite),
+        AppRoutes.SETTINGS: (ctx) =>
+            SettingsScreen(settings: settings, onSettingsChange: _filterMeals)
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (_) {
