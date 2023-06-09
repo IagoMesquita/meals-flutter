@@ -52,6 +52,9 @@ class _MyAppState extends State<MyApp> {
      });
   }
 
+  bool _isFavorite(Meal meal) {
+    return _favoriteMeals.contains(meal);
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -71,7 +74,7 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.HOME: (ctx) => TabsScreen(favoriteMeals: _favoriteMeals),
         AppRoutes.CATEGORIES_MEALS: (ctx) =>
             CategoriesMealsScreen(meals: _availableMeals),
-        AppRoutes.MEAL_DETAIL: (ctx) => MealDetailScreen( onTogglefavorite: _toogleFavorite),
+        AppRoutes.MEAL_DETAIL: (ctx) => MealDetailScreen( isFavorite: _isFavorite, onTogglefavorite: _toogleFavorite),
         AppRoutes.SETTINGS: (ctx) =>
             SettingsScreen(settings: settings, onSettingsChange: _filterMeals)
       },
