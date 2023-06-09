@@ -16,6 +16,15 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
 
+  late Settings settings;
+
+  @override
+  void initState() {
+    super.initState();
+
+    settings = widget.settings;
+  }
+
   Widget _createSwitch(
     String title,
     String subtitle,
@@ -63,7 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   'Só exibe refeições sem glutén',
                   widget.settings.isGlutenFree,
                   (value) {
-                    setState(() => widget.settings.isGlutenFree = value);
+                    setState(() => settings.isGlutenFree = value);
                   },
                 ),
                 _createSwitch(
@@ -71,7 +80,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   'Só exibe refeições sem lactose',
                   widget.settings.isLactoseFree,
                   (value) {
-                    setState(() => widget.settings.isLactoseFree = value);
+                    setState(() => settings.isLactoseFree = value);
                   },
                 ),
                 _createSwitch(
@@ -79,15 +88,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   'Só exibe refeições veganas',
                   widget.settings.isVegan,
                   (value) {
-                    setState(() => widget.settings.isVegan = value);
-                  },
+                    setState(() => settings.isVegan = value);
+                  }
                 ),
                 _createSwitch(
                   'Vegetariana',
                   'Só exibe refeições vegetarianas',
                   widget.settings.isVegetarian,
                   (value) {
-                     setState(() => widget.settings.isVegetarian = value);
+                     setState(() => settings.isVegetarian = value);
                   },
                 )
               ],

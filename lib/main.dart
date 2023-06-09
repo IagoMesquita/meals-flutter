@@ -27,6 +27,9 @@ class _MyAppState extends State<MyApp> {
 
   void _filterMeals(Settings settings) {
     setState(() {
+
+      this.settings = settings;
+
       _availableMeals = DUMMY_MEALS.where((meal) {
          final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
          final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
